@@ -54,8 +54,13 @@ const String responseHTML =  R"====(<!DOCTYPE html>
         }
 
         .box a:hover {
-            background-color: #45a049;
+            background-color: #e3bf0e;
         }
+
+        .box a:active{
+            background-color: red;
+        }
+
 
         @media (min-width: 768px) {
             .container {
