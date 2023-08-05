@@ -15,10 +15,9 @@ const String responseHTML =  R"====(<!DOCTYPE html>
     <title>Identificador</title>
     <style>
         body {
-            background-color: lightslategray; 
-            background-image: linear-gradient(to bottom,#3746ee,#b6a2ff);
+             background-image: linear-gradient(to bottom right,#5a07f0, #d17bff);
             margin: 1%;
-            padding: 5%;
+            padding: 9.5%;
             font-family: Arial, sans-serif;
         }
 
@@ -30,11 +29,19 @@ const String responseHTML =  R"====(<!DOCTYPE html>
         }
 
         .container {
+            width: 80%;
+            height: inherit;
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
             align-items: center;
-            padding: 20px;
+            padding: 0%;
+            margin: 12%;
+            background-color: #4f37d2;
+            position: relative;
+            border: 2px solid;
+            border-radius: 20px;
+            box-shadow: rgb(150,150,150) 5px 5px 20px;
         }
 
         .box {
@@ -46,7 +53,7 @@ const String responseHTML =  R"====(<!DOCTYPE html>
             display: block;
             margin-bottom: 10px;
             text-decoration: none;
-            background-color: #4CAF50;
+            background-color: #09885f;
             color: white;
             padding: 10px;
             border-radius: 5px;
@@ -54,13 +61,11 @@ const String responseHTML =  R"====(<!DOCTYPE html>
         }
 
         .box a:hover {
-            background-color: #e3bf0e;
+            bbackground-color: #e3bf0e;
         }
-
         .box a:active{
             background-color: red;
         }
-
 
         @media (min-width: 768px) {
             .container {
