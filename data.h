@@ -96,13 +96,12 @@ const String responseHTML =  R"====(<!DOCTYPE html>
     <!-- Repite los demás bloques de filas de la tabla siguiendo el mismo formato -->
 
     )====";
-    const String responseHTML1 =  R"====(  <div class="box">
+    const String responseHTML1 =  R"====(<div class="box">
         <p>SALIDA # )====";
-     const String responseHTML2  = R"====(     </p>
-        <a href="/on  )====";
-     const String responseHTML3  = R"====(     ">ON</a>
-        <a href="/off  )====";
-     const String responseHTML4  = R"====(     ">OFF</a>
-    </div>  )====";  
-  const String responseHTML5 =  R"====(  </div>    </body>  </html>
-     )====";
+     const String responseHTML2  = R"====(</p>
+        <a href="/on)====";
+     const String responseHTML3  = R"====(">ON</a>
+        <a href="/off)====";
+     const String responseHTML4  = R"====(">OFF</a>
+    </div>)====";  
+  const String responseHTML5 =  R"====(</div></body></html>)====";
