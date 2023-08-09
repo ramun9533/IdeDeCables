@@ -14,7 +14,7 @@ static unsigned short int LEDPins[numLEDs] = {2, 0, 4, 5, 18, 19, 3};  // Actual
 // Variables Cliente
 char linebuf[80];
 int charcount = 0;
-
+//
 void setup() {
   Serial.begin(115200);
   
