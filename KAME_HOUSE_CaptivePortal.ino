@@ -86,6 +86,40 @@ void loop() {
             Serial.println("LED 2 OFF");
             digitalWrite(LED2, LOW);
           }
+          // Manipulación de los LEDs HTTP/1.1
+          if (strstr(linebuf, "GET /on3") > 0) {
+            Serial.println("LED 3 ON");
+            digitalWrite(LED3, HIGH);
+          }
+          else if (strstr(linebuf, "GET /off3") > 0) {
+            Serial.println("LED 3 OFF");
+            digitalWrite(LED3, LOW);
+          }
+          else if (strstr(linebuf, "GET /on4") > 0) {
+            Serial.println("LED 4 ON");
+            digitalWrite(LED4, HIGH);
+          }
+          else if (strstr(linebuf, "GET /off4") > 0) {
+            Serial.println("LED 4 OFF");
+            digitalWrite(LED4, LOW);
+          }
+          // Manipulación de los LEDs HTTP/1.1
+          if (strstr(linebuf, "GET /on5") > 0) {
+            Serial.println("LED 5 ON");
+            digitalWrite(LED5, HIGH);
+          }
+          else if (strstr(linebuf, "GET /off5") > 0) {
+            Serial.println("LED 5 OFF");
+            digitalWrite(LED5, LOW);
+          }
+          else if (strstr(linebuf, "GET /on6") > 0) {
+            Serial.println("LED 6 ON");
+            digitalWrite(LED6, HIGH);
+          }
+          else if (strstr(linebuf, "GET /off6") > 0) {
+            Serial.println("LED 6 OFF");
+            digitalWrite(LED6, LOW);
+          }
           // Repite para otros LEDs, como LED3, LED4, etc.
           memset(linebuf, 0, sizeof(linebuf));
           charcount = 0;
