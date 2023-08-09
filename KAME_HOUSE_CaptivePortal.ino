@@ -8,13 +8,8 @@ DNSServer dnsServer;
 WiFiServer server(80);
 
 // Pines de los LEDs
-static unsigned short int LED6 = 19;
-static unsigned short int LED5 = 18;
-static unsigned short int LED4 = 5;
-static unsigned short int LED3 = 4;
-static unsigned short int LED7 = 3;
-static unsigned short int LED1 = 2;
-static unsigned short int LED2 = 0;
+const int numLEDs = 7;
+static unsigned short int LEDPins[numLEDs] = {2, 0, 4, 5, 18, 19, 3};  // Actualiza los pines de acuerdo a tu configuración
 
 // Variables Cliente
 char linebuf[80];
@@ -23,13 +18,9 @@ int charcount = 0;
 void setup() {
   Serial.begin(115200);
   
-  pinMode(LED1, OUTPUT);
-  pinMode(LED2, OUTPUT);
-  pinMode(LED3, OUTPUT);
-  pinMode(LED4, OUTPUT);
-  pinMode(LED5, OUTPUT);
-  pinMode(LED6, OUTPUT);
-  pinMode(LED7, OUTPUT);
+  for (int i = 0; i < numLEDs; i++) {
+    pinMode(LEDPins[i], OUTPUT);
+  }
 
   WiFi.mode(WIFI_AP);
   WiFi.softAP("KAME_HOUSE");
@@ -37,6 +28,18 @@ void setup() {
 
   dnsServer.start(DNS_PORT, "*", apIP);
   server.begin();
+}
+
+void processLEDRequest(const char* request, int ledIndex) {
+  if (strstr(linebuf, request) > 0) {
+    if (strstr(request, "on") != nullptr) {
+      digitalWrite(LEDPins[ledIndex], HIGH);
+      Serial.printf("LED %d ON\n", ledIndex + 1);
+    } else if (strstr(request, "off") != nullptr) {
+      digitalWrite(LEDPins[ledIndex], LOW);
+      Serial.printf("LED %d OFF\n", ledIndex + 1);
+    }
+  }
 }
 
 void loop() {
@@ -70,57 +73,15 @@ void loop() {
           currentLineIsBlank = true;
 
           // Manipulación de los LEDs HTTP/1.1
-          if (strstr(linebuf, "GET /on1") > 0) {
-            Serial.println("LED 1 ON");
-            digitalWrite(LED1, HIGH);
+          for (int i = 1; i <= numLEDs; i++) {
+            char requestOn[10];
+            char requestOff[10];
+            sprintf(requestOn, "GET /on%d", i);
+            sprintf(requestOff, "GET /off%d", i);
+            processLEDRequest(requestOn, i - 1);
+            processLEDRequest(requestOff, i - 1);
           }
-          else if (strstr(linebuf, "GET /off1") > 0) {
-            Serial.println("LED 1 OFF");
-            digitalWrite(LED1, LOW);
-          }
-          else if (strstr(linebuf, "GET /on2") > 0) {
-            Serial.println("LED 2 ON");
-            digitalWrite(LED2, HIGH);
-          }
-          else if (strstr(linebuf, "GET /off2") > 0) {
-            Serial.println("LED 2 OFF");
-            digitalWrite(LED2, LOW);
-          }
-          // Manipulación de los LEDs HTTP/1.1
-          if (strstr(linebuf, "GET /on3") > 0) {
-            Serial.println("LED 3 ON");
-            digitalWrite(LED3, HIGH);
-          }
-          else if (strstr(linebuf, "GET /off3") > 0) {
-            Serial.println("LED 3 OFF");
-            digitalWrite(LED3, LOW);
-          }
-          else if (strstr(linebuf, "GET /on4") > 0) {
-            Serial.println("LED 4 ON");
-            digitalWrite(LED4, HIGH);
-          }
-          else if (strstr(linebuf, "GET /off4") > 0) {
-            Serial.println("LED 4 OFF");
-            digitalWrite(LED4, LOW);
-          }
-          // Manipulación de los LEDs HTTP/1.1
-          if (strstr(linebuf, "GET /on5") > 0) {
-            Serial.println("LED 5 ON");
-            digitalWrite(LED5, HIGH);
-          }
-          else if (strstr(linebuf, "GET /off5") > 0) {
-            Serial.println("LED 5 OFF");
-            digitalWrite(LED5, LOW);
-          }
-          else if (strstr(linebuf, "GET /on6") > 0) {
-            Serial.println("LED 6 ON");
-            digitalWrite(LED6, HIGH);
-          }
-          else if (strstr(linebuf, "GET /off6") > 0) {
-            Serial.println("LED 6 OFF");
-            digitalWrite(LED6, LOW);
-          }
-          // Repite para otros LEDs, como LED3, LED4, etc.
+
           memset(linebuf, 0, sizeof(linebuf));
           charcount = 0;
         } else if (c != '\r') {
