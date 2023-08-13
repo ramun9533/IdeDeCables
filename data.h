@@ -15,54 +15,71 @@ const String responseHTML =  R"====(<!DOCTYPE html>
     <title>Identificador</title>
     <style>
         body {
-             background-image: linear-gradient(to bottom right,#5a07f0, #d17bff);
+            background-image: linear-gradient(to top,#5a07f0, #d17bff);
             margin: 1%;
             padding: 9.5%;
-            font-family: Arial, sans-serif;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            
+            
+        }
+        a {
+            color: white;
+            font-weight: bold;
+            margin-bottom: 20%;
+        }
+        p {
+            color: black;
+            font-weight: bold;
+            margin: 0.5%;
+            pading:0%;
         }
 
         h1 {
             text-align: center;
             font-size: 24px;
-            color: #33285e;
-            padding: 20px 0;
+            color: white;
+            padding: 4%;
+            margin:0%;
+            
         }
 
         .container {
-            width: 80%;
+            color: white;
+            width: 90%;
             height: inherit;
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
             align-items: center;
             padding: 0%;
-            margin: 12%;
-            background-color: #4f37d2;
+            margin-left: 7%;
+            background-color: white;
             position: relative;
-            border: 2px solid;
+            border: 0px solid;
             border-radius: 20px;
             box-shadow: rgb(150,150,150) 5px 5px 20px;
         }
 
         .box {
-            padding: 10px;
+            padding: 5%;
             text-align: center;
         }
 
         .box a {
-            display: block;
-            margin-bottom: 10px;
-            text-decoration: none;
-            background-color: #09885f;
-            color: white;
-            padding: 10px;
-            border-radius: 5px;
-            transition: background-color 0.3s;
+                background-image: linear-gradient(to top,#186a3b,  #2ecc71);
+                display: block;
+                text-decoration: none;
+                color: white;
+                padding: 10%;
+                border-radius: 15px;
+                transition: background-color 0.3s;
+                
         }
 
         .box a:hover {
-            bbackground-color: #e3bf0e;
+            background-color: #e3bf0e;
         }
+
         .box a:active{
             background-color: red;
         }
@@ -84,11 +101,12 @@ const String responseHTML =  R"====(<!DOCTYPE html>
                 max-width: 1000px;
             }
         }
+
     </style>
 </head>
 <body>
 
-<h1>Mi programa serio esp32</h1>
+<h1>Internet de las cosas</h1>
 
 <div class="container">
  
@@ -97,11 +115,12 @@ const String responseHTML =  R"====(<!DOCTYPE html>
 
     )====";
     const String responseHTML1 =  R"====(<div class="box">
-        <p>SALIDA # )====";
+        <p>SALIDA )====";
      const String responseHTML2  = R"====(</p>
         <a href="/on)====";
      const String responseHTML3  = R"====(">ON</a>
         <a href="/off)====";
-     const String responseHTML4  = R"====(">OFF</a>
+     const String responseHTML4  = R"====(">OFF</a>&nbsp
     </div>)====";  
-  const String responseHTML5 =  R"====(</div></body></html>)====";
+  const String responseHTML5 =  R"====(  </div>    </body>  </html>
+     )====";
