@@ -14,7 +14,7 @@ static unsigned short int LEDPins[numLEDs] = {2, 0, 4, 5, 18, 19, 3};  // Actual
 // Variables Cliente
 char linebuf[80];
 int charcount = 0;
-//
+
 void setup() {
   Serial.begin(115200);
   
@@ -63,8 +63,8 @@ void loop() {
           if (currentLine.length() == 0) {
             client.println("HTTP/1.1 200 OK");
             client.println("Content-type:text/html");
-            client.println();
-            client.print(responseHTML);
+            client. println();
+           // cliente.print(responseHTML);
             web(client); // Llama a la función web desde data.h
             break;
           } else {
