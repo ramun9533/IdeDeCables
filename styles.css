@@ -58,17 +58,16 @@ body {
                 
         }
 
-        .box input:focus {
+        .box input:hover {
             color: white;
-            background-image: linear-gradient(to top,#dc2f02,  #f48c06);
+            background-image: linear-gradient(to top,#f48c06,  #ffd500);
             box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Agregar sombra */
         }
 
-        .box input:disabled{
-            background-color: red;
-        }
-        .box input:enabled{
-            background-color: blue;
+    
+        .box input:active{
+            background-image: linear-gradient(to top,#dc2f02,  #f48c06);
+            
         }
 
         @media (min-width: 768px) {
