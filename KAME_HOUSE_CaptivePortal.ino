@@ -17,7 +17,7 @@ int charcount = 0;
 
 void setup() {
   Serial.begin(115200);
-  
+
   for (int i = 0; i < numLEDs; i++) {
     pinMode(LEDPins[i], OUTPUT);
   }
@@ -41,7 +41,17 @@ void processLEDRequest(const char* request, int ledIndex) {
     }
   }
 }
-
+// Manipulación de los LEDs HTTP/1.1
+void manipulacionLed(){
+  for (int i = 1; i <= numLEDs; i++) {
+            char requestOn[10];
+            char requestOff[10];
+            sprintf(requestOn, "GET /on%d", i);
+            sprintf(requestOff, "GET /off%d", i);
+            processLEDRequest(requestOn, i - 1);
+            processLEDRequest(requestOff, i - 1);
+          }
+  }
 void loop() {
   dnsServer.processNextRequest();
   WiFiClient client = server.available();
@@ -49,13 +59,13 @@ void loop() {
   if (client) {
     String currentLine = "";
     boolean currentLineIsBlank = true;
-    
+
     while (client.connected()) {
       if (client.available()) {
         char c = client.read();
         Serial.write(c);
         linebuf[charcount] = c;
-        
+
         if (charcount < sizeof(linebuf) - 1) charcount++;
 
         if (c == '\n') {
@@ -64,7 +74,7 @@ void loop() {
             client.println("HTTP/1.1 200 OK");
             client.println("Content-type:text/html");
             client. println();
-           // cliente.print(responseHTML);
+            // cliente.print(responseHTML);
             web(client); // Llama a la función web desde data.h
             break;
           } else {
@@ -73,15 +83,7 @@ void loop() {
           currentLineIsBlank = true;
 
           // Manipulación de los LEDs HTTP/1.1
-          for (int i = 1; i <= numLEDs; i++) {
-            char requestOn[10];
-            char requestOff[10];
-            sprintf(requestOn, "GET /on%d", i);
-            sprintf(requestOff, "GET /off%d", i);
-            processLEDRequest(requestOn, i - 1);
-            processLEDRequest(requestOff, i - 1);
-          }
-
+          manipulacionLed();
           memset(linebuf, 0, sizeof(linebuf));
           charcount = 0;
         } else if (c != '\r') {
