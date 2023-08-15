@@ -1,20 +1,12 @@
-const String responseHTML =  R"====(<!DOCTYPE html>
+const String pagina =  R"====(
 <!DOCTYPE html>
 <html lang="es">
   <head>
     <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
-    <header></header>
-    <main></main>
-    <!DOCTYPE html>
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Identificador</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        body {
+     body {
             background-image: linear-gradient(to top,#5a07f0, #d17bff);
             margin: 1%;
             padding: 9.5%;
@@ -22,66 +14,60 @@ const String responseHTML =  R"====(<!DOCTYPE html>
             
             
         }
-        a {
+        input {
             color: white;
             font-weight: bold;
             margin-bottom: 20%;
+            width: 100%;
         }
         p {
             color: black;
             font-weight: bold;
-            margin: 0.5%;
-            pading:0%;
         }
 
         h1 {
             text-align: center;
             font-size: 24px;
             color: white;
-            padding: 4%;
-            margin:0%;
-            
+            padding: 20px 0;
         }
+        
 
         .container {
             color: white;
-            width: 90%;
+            width: 80%;
             height: inherit;
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
             align-items: center;
             padding: 0%;
-            margin-left: 7%;
+            margin: 12%;
             background-color: white;
             position: relative;
-            border: 0px solid;
+            border: 2px solid;
             border-radius: 20px;
             box-shadow: rgb(150,150,150) 5px 5px 20px;
         }
 
         .box {
-            padding: 5%;
+            padding-left: 10px;
             text-align: center;
         }
 
-        .box a {
+        .box input {
                 background-image: linear-gradient(to top,#186a3b,  #2ecc71);
                 display: block;
                 text-decoration: none;
                 color: white;
-                padding: 10%;
+                padding: 10px;
                 border-radius: 15px;
                 transition: background-color 0.3s;
                 
         }
-
-        .box a:hover {
-            background-color: #e3bf0e;
-        }
-
-        .box a:active{
-            background-color: red;
+        .box input:active{
+            background-image: linear-gradient(to top,#dc2f02,  #f48c06);
+            
         }
 
         @media (min-width: 768px) {
@@ -102,25 +88,49 @@ const String responseHTML =  R"====(<!DOCTYPE html>
             }
         }
 
-    </style>
-</head>
-<body>
-
-<h1>Internet de las cosas</h1>
-
-<div class="container">
+        </style>
+      </head>
  
-    
-    <!-- Repite los demás bloques de filas de la tabla siguiendo el mismo formato -->
+      <body>
+      <h1>interface IoT</h1>
 
-    )====";
-    const String responseHTML1 =  R"====(<div class="box">
-        <p>SALIDA )====";
-     const String responseHTML2  = R"====(</p>
-        <a href="/on)====";
-     const String responseHTML3  = R"====(">ON</a>
-        <a href="/off)====";
-     const String responseHTML4  = R"====(">OFF</a>&nbsp
-    </div>)====";  
-  const String responseHTML5 =  R"====(  </div>    </body>  </html>
-     )====";
+      <div class="container">)====";
+
+const String pagina1 =  R"====( <div class="box">
+        <p>SALIDA #)====";
+        
+const String pagina2 =  R"====(</p>
+        <input type="button" id="botonEncender" onclick="botonEncender)====";
+const String pagina3 =  R"====(()" value="Encender">
+        <input type="button" id="botonApagar"  onclick="botonApagar)====";
+const String pagina4 =  R"====(()" value="Apagar">
+        </div>)====";
+const String pagina5 =  R"====(</div>
+    <script>)====";
+const String pagina6 =  R"====(function botonEncender)====";
+
+const String pagina7 =  R"====((){
+          consultaGET("on)====";
+const String pagina8 =  R"====(");
+      }
+      function botonApagar)====";
+const String pagina9 =  R"====((){
+          consultaGET("off)====";
+const String pagina10 =  R"====(");
+      })====";
+const String pagina11 =  R"====(function consultaGET(consulta){
+          const Http = new XMLHttpRequest();
+          console.log(`Consultando  ${consulta}`)
+          Http.open("GET", consulta);
+          Http.send();
+
+          Http.onreadystatechange = (e) => {
+          console.log(Http.status );
+          console.log(Http.responseText);
+          };
+      }
+        </script>
+        </body>
+        </html>)====";
+
+const String pagina20 =  R"====(function botonEncender)====";
