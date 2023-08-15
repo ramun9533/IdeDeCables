@@ -10,20 +10,46 @@
  
 <body>
 <!-- <div class="ideCables"><h1>IdeCables</h1></div> -->
-
+<h1>interface IoT</h1>
 
 <div class="container">
     <div class="box">
         <p>SALIDA #1</p>
-        <a href="/on1">ON</a>
-        <a href="/off1">OFF</a>
+       
+          <input type="button" id="botonEncender" onclick="botonEncender()" value="Encender">
+       
+       
+          <input type="button" id="botonApagar"  onclick="botonApagar()" value="Apagar">
+       
+        
+        
     </div>
    
     <!-- Repite los demás bloques de filas de la tabla siguiendo el mismo formato -->
 </div>
+<footer></footer>
+    <script>
+      function botonEncender(){
+          console.log("Encender LED");
+          consultaGET("encender");
+      }
 
+      function botonApagar(){
+          console.log("Apagar LED");
+          consultaGET("apagar");
+      }
 
+      function consultaGET(consulta){
+          const Http = new XMLHttpRequest();
+          console.log(`Consultando  ${consulta}`)
+          Http.open("GET", consulta);
+          Http.send();
 
-    <footer></footer>
+          Http.onreadystatechange = (e) => {
+          console.log(Http.status );
+          console.log(Http.responseText);
+          };
+      }
+  </script>
   </body>
 </html>
