@@ -65,11 +65,11 @@ const String pagina =  R"====(
                 transition: background-color 0.3s;
                 
         }
-        .box input:active{
-            background-image: linear-gradient(to top,#dc2f02,  #f48c06);
+          .box input:active{
+            background-image: linear-gradient(to top,#adb5bd,  #f8f9fa);
+            color:black;
             
         }
-
         @media (min-width: 768px) {
             .container {
                 max-width: 600px;
